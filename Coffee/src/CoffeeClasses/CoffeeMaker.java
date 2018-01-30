@@ -150,22 +150,25 @@ public class CoffeeMaker {
 	}
 	
 	/**
-	 * 
+	 * Add to current inventory.
 	 * <p>
-	 * 
+	 * User can decide how much of each ingredient to add.
 	 * <p>
 	 * 
 	 * @param Inventory - inventory to add to.
 	 * @return Boolean - true or false
 	 */
 	public boolean addInventory(Inventory inventory) {
+		
 		return true;
+		//user decides how much to add, cap at 20
+		//if full return false
 	}
 	
 	/**
-	 * 
+	 * Edit recipe
 	 * <p>
-	 * 
+	 * User send in recipe that has been edited. Find recipe with same name and edit values. Return false if recipe does not exist.
 	 * <p>
 	 * 
 	 * @param Recipe - Edited recipe to be changed
@@ -173,5 +176,6 @@ public class CoffeeMaker {
 	 */
 	public boolean editRecipe(Recipe recipe) {
 		return true;
+		
 	}
 }

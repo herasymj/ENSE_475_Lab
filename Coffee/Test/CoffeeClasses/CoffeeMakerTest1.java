@@ -106,7 +106,14 @@ class CoffeeMakerTest1 {
 
 	@Test
 	void testEditRecipe() {
-		fail("Not yet implemented");
+		CoffeeMaker cm = new CoffeeMaker();
+		Recipe r3 = new Recipe("r3", 3, 3, 3);
+		Recipe r4 = new Recipe("r4", 4, 4, 4);
+		Recipe r5 = new Recipe("r5", 5, 5, 5);
+		
+		cm.addRecipe(r3);
+		cm.addRecipe(r5);
+		cm.addRecipe(r4);
 	}
 
 }
