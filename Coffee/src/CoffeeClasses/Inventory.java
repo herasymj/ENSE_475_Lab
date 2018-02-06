@@ -12,6 +12,8 @@ public class Inventory {
 	int coffeeLevel;
 	int milkLevel;
 	int sugarLevel;
+	int expressoLevel;
+	int chocolateLevel;
 	
 	/**
 	 * Inventory constructor.
@@ -23,6 +25,8 @@ public class Inventory {
 		coffeeLevel = 0;
 		milkLevel = 0;
 		sugarLevel = 0;
+		expressoLevel = 0;
+		chocolateLevel = 0;
 	}
 	
 	/**
@@ -95,5 +99,53 @@ public class Inventory {
 	 */
 	public void setSugar(int sugar) {
 		sugarLevel = sugar;
+	}
+	
+	/**
+	 * Returns expresso inventory.
+	 * <p>
+	 * Returns the current inventory's expresso level.
+	 * <p>
+	 * 
+	 * @return Int - expresso level
+	 */
+	public int getExpresso() {
+		return expressoLevel;
+	}
+	
+	/**
+	 * Sets expresso inventory.
+	 * <p>
+	 * Sets the inventory's expresso level to certain amount.
+	 * <p>
+	 * 
+	 * @param Int - expresso amount
+	 */
+	public void setExpresso(int expresso) {
+		expressoLevel = expresso;
+	}
+	
+	/**
+	 * Returns chocolate inventory.
+	 * <p>
+	 * Returns the current inventory's chocolate level.
+	 * <p>
+	 * 
+	 * @return Int - chocolate level
+	 */
+	public int getChocolate() {
+		return chocolateLevel;
+	}
+	
+	/**
+	 * Sets chocolate inventory.
+	 * <p>
+	 * Sets the inventory's chocolate level to certain amount.
+	 * <p>
+	 * 
+	 * @param Int - chocolate amount
+	 */
+	public void setChocolate(int chocolate) {
+		chocolateLevel = chocolate;
 	}
 }

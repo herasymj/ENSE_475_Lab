@@ -24,11 +24,11 @@ class CoffeeMakerTest1 {
 	@Test
 	public void testAddRecipe() {
 		CoffeeMaker cm = new CoffeeMaker();
-		Recipe r1 = new Recipe("r1", 15, 100, 21);
-		Recipe r2 = new Recipe("r2", 2, 2, 2);
-		Recipe r3 = new Recipe("r3", 3, 3, 3);
-		Recipe r4 = new Recipe("r4", 4, 4, 4);
-		Recipe r5 = new Recipe("r5", 5, 5, 5);
+		Recipe r1 = new Recipe("r1", 15, 100, 21, 7, 6);
+		Recipe r2 = new Recipe("r2", 2, 2, 2, 2, 2);
+		Recipe r3 = new Recipe("r3", 3, 3, 3, 3, 3);
+		Recipe r4 = new Recipe("r4", 4, 4, 4, 4, 4);
+		Recipe r5 = new Recipe("r5", 5, 5, 5, 5, 5);
 		
 		assertEquals(true, cm.addRecipe(r1));
 		assertEquals(true, cm.addRecipe(r2));
@@ -43,8 +43,8 @@ class CoffeeMakerTest1 {
 	@Test
 	public void testDeleteRecipe() {
 		CoffeeMaker cm = new CoffeeMaker();
-		Recipe r4 = new Recipe("r4", 4, 4, 4);
-		Recipe r5 = new Recipe("r5", 5, 5, 5);
+		Recipe r4 = new Recipe("r4", 4, 4, 4, 4, 4);
+		Recipe r5 = new Recipe("r5", 5, 5, 5, 5, 5);
 		
 		cm.addRecipe(r4);
 		cm.addRecipe(r5);
@@ -61,8 +61,8 @@ class CoffeeMakerTest1 {
 	@Test
 	public void testGetRecipe() {
 		CoffeeMaker cm = new CoffeeMaker();
-		Recipe r1 = new Recipe("r1", 15, 100, 21);
-		Recipe r2 = new Recipe("r2", 2, 2, 2);
+		Recipe r1 = new Recipe("r1", 15, 100, 21, 45, 3);
+		Recipe r2 = new Recipe("r2", 2, 2, 2, 2, 2);
 		
 		cm.addRecipe(r1);
 		cm.addRecipe(r2);
@@ -83,9 +83,9 @@ class CoffeeMakerTest1 {
 	@Test
 	public void testMakeCoffee() {
 		CoffeeMaker cm = new CoffeeMaker();
-		Recipe r3 = new Recipe("r3", 3, 3, 3);
-		Recipe r4 = new Recipe("r4", 4, 4, 4);
-		Recipe r5 = new Recipe("r5", 5, 5, 5);
+		Recipe r3 = new Recipe("r3", 3, 3, 3, 3, 3);
+		Recipe r4 = new Recipe("r4", 4, 4, 4, 4, 4);
+		Recipe r5 = new Recipe("r5", 5, 5, 5, 5, 5);
 		
 		cm.addRecipe(r3);
 		cm.addRecipe(r5);
@@ -107,9 +107,9 @@ class CoffeeMakerTest1 {
 	@Test
 	void testEditRecipe() {
 		CoffeeMaker cm = new CoffeeMaker();
-		Recipe r3 = new Recipe("r3", 3, 3, 3);
-		Recipe r4 = new Recipe("r4", 4, 4, 4);
-		Recipe r5 = new Recipe("r5", 5, 5, 5);
+		Recipe r3 = new Recipe("r3", 3, 3, 3, 3, 3);
+		Recipe r4 = new Recipe("r4", 4, 4, 4, 4, 4);
+		Recipe r5 = new Recipe("r5", 5, 5, 5, 5, 5);
 		
 		cm.addRecipe(r3);
 		cm.addRecipe(r5);

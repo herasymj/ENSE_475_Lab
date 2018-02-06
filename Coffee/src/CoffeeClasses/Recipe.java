@@ -14,6 +14,8 @@ public class Recipe {
 	int milk;
 	int sugar;
 	int coffee;
+	int expresso;
+	int chocolate;
 	
 	/**
 	 * Recipe constructor.
@@ -26,11 +28,13 @@ public class Recipe {
 	 * @param Int - sugar level, must be positive integer no greater than MAX_INVENTORY.
 	 * @param Int - coffee level, must be positive integer no greater than MAX_INVENTORY.
 	 */
-	public Recipe(java.lang.String recipeName, int milkLevel, int sugarLevel, int coffeeLevel) {
+	public Recipe(java.lang.String recipeName, int milkLevel, int sugarLevel, int coffeeLevel, int expressoLevel, int chocolateLevel) {
 		name = recipeName;
 		milk = milkLevel;
 		sugar = sugarLevel;
 		coffee = coffeeLevel;
+		expresso = expressoLevel;
+		chocolate = chocolateLevel;
 	}
 	
 	/**
@@ -79,5 +83,29 @@ public class Recipe {
 	 */
 	public int getSugarLevel() {
 		return sugar;
+	}
+	
+	/**
+	 * Returns expresso level.
+	 * <p>
+	 * Returns the current recipes expresso level.
+	 * <p>
+	 * 
+	 * @return Int - expresso level
+	 */
+	public int getExpressoLevel() {
+		return expresso;
+	}
+	
+	/**
+	 * Returns chocolate level.
+	 * <p>
+	 * Returns the current recipes chocolate level.
+	 * <p>
+	 * 
+	 * @return Int - chocolate level
+	 */
+	public int getChocolateLevel() {
+		return chocolate;
 	}
 }

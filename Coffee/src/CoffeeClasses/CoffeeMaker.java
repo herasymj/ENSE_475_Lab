@@ -19,7 +19,7 @@ public class CoffeeMaker {
 	/**
 	 * CoffeeMaker constructor, sets inventory.
 	 * <p>
-	 * Takes the max inventory amount and sets the inventory's coffe, milk, and sugar.
+	 * Takes the max inventory amount and sets the inventory's coffee, milk, and sugar.
 	 * <p>
 	 */
 	public CoffeeMaker(){
@@ -29,6 +29,21 @@ public class CoffeeMaker {
 		inventory.setCoffee(MAX_INVENTORY);
 		inventory.setSugar(MAX_INVENTORY);
 		inventory.setMilk(MAX_INVENTORY);
+		inventory.setExpresso(MAX_INVENTORY);
+		inventory.setChocolate(MAX_INVENTORY);
+		
+		//Add 4 recipes to coffee maker pre-defined the reset recipe num to zero
+		Recipe Cappuccino = new Recipe("Cappuccino", 2, 0, 0, 1, 0);
+		Recipe Latte = new Recipe("Latte", 5, 0, 0, 1, 0);
+		Recipe Expresso = new Recipe("Expresso", 0, 0, 0, 1, 0);
+		Recipe Mocha = new Recipe("Mocha", 1, 0, 0, 2, 2);
+		
+		recipes.add(Cappuccino);
+		recipes.add(Latte);
+		recipes.add(Expresso);
+		recipes.add(Mocha);
+		
+		recipeNum = 0;
 	}
 	
 	/**
@@ -44,6 +59,8 @@ public class CoffeeMaker {
 		int coffee = rAdd.getCoffeeLevel();
 		int milk = rAdd.getMilkLevel();
 		int sugar = rAdd.getSugarLevel();
+		int expresso = rAdd.getExpressoLevel();
+		int chocolate = rAdd.getChocolateLevel();
 		String name = rAdd.getRecipeName();
 		
 		if(rAdd.getCoffeeLevel() > MAX_INVENTORY || rAdd.getCoffeeLevel() < 0) {
@@ -55,9 +72,15 @@ public class CoffeeMaker {
 		if(rAdd.getSugarLevel() > MAX_INVENTORY || rAdd.getSugarLevel() < 0) {
 			sugar = MAX_INVENTORY;
 		}
+		if(rAdd.getExpressoLevel() > MAX_INVENTORY || rAdd.getExpressoLevel() < 0) {
+			expresso = MAX_INVENTORY;
+		}
+		if(rAdd.getChocolateLevel() > MAX_INVENTORY || rAdd.getChocolateLevel() < 0) {
+			chocolate = MAX_INVENTORY;
+		}
 		
 		if(this.recipeNum < MAX_NUM_RECIPES) {
-			recipes.add(new Recipe(name, milk, sugar, coffee));
+			recipes.add(new Recipe(name, milk, sugar, coffee, expresso, chocolate));
 			this.recipeNum += 1;
 			return true;
 		}
@@ -133,18 +156,24 @@ public class CoffeeMaker {
 		int recipeCoffee = getRecipe(recipeName).getCoffeeLevel();
 		int recipeMilk = getRecipe(recipeName).getMilkLevel();
 		int recipeSugar = getRecipe(recipeName).getSugarLevel();
+		int recipeExpresso = getRecipe(recipeName).getExpressoLevel();
+		int recipeChocolate = getRecipe(recipeName).getChocolateLevel();
 		
 		int inventoryCoffee = getInventory().getCoffee();
 		int inventoryMilk = getInventory().getMilk();
 		int inventorySugar = getInventory().getSugar();
+		int inventoryExpresso = getInventory().getExpresso();
+		int inventoryChocolate = getInventory().getChocolate();
 		
-		if(recipeCoffee > inventoryCoffee || recipeSugar > inventorySugar || recipeMilk > inventoryMilk) {
+		if(recipeCoffee > inventoryCoffee || recipeSugar > inventorySugar || recipeMilk > inventoryMilk || recipeExpresso > inventoryExpresso || recipeChocolate > inventoryChocolate) {
 			return false;
 		}
 		else {
 			getInventory().setCoffee(inventoryCoffee - recipeCoffee);
 			getInventory().setMilk(inventoryMilk - recipeMilk);
 			getInventory().setSugar(inventorySugar - recipeSugar);
+			getInventory().setExpresso(inventoryExpresso - recipeExpresso);
+			getInventory().setChocolate(inventoryChocolate - recipeChocolate);
 			return true;
 		}
 	}
