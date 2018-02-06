@@ -103,7 +103,7 @@ public class CoffeeMaker {
 			return false;
 		}
 		else {
-			for(int i = 0; i < this.recipeNum; i++) {
+			for(int i = 0; i < this.recipes.size(); i++) {
 				if(recipes.get(i).getRecipeName().equals(recipeName)) {
 					recipes.remove(i);
 					this.recipeNum -= 1;
@@ -131,7 +131,7 @@ public class CoffeeMaker {
 	 * @return Recipe - returns recipe or null if not found
 	 */
 	public Recipe getRecipe(java.lang.String recipeName) {
-		for(int i = 0; i < this.recipeNum; i++) {
+		for(int i = 0; i < this.recipes.size(); i++) {
 			if(recipes.get(i).getRecipeName().equals(recipeName)) {
 				return recipes.get(i);
 			}
@@ -188,10 +188,55 @@ public class CoffeeMaker {
 	 * @return Boolean - true or false
 	 */
 	public boolean addInventory(Inventory inventory) {
+		//return false if inventory full or new inventory empty
+		if(inventory == null || (getInventory().getMilk() == 20 && getInventory().getSugar() == 20 && getInventory().getCoffee() == 20 &&
+				getInventory().getExpresso() == 20 && getInventory().getChocolate() == 20) || (inventory.getCoffee() == 0
+				&& inventory.getSugar() == 0 && inventory.getMilk() == 0 && inventory.getExpresso() == 0 && inventory.getChocolate() == 0)) {
+			return false;
+		}
+		
+		int inCoffee = getInventory().getCoffee();
+		int inSugar = getInventory().getSugar();
+		int inMilk = getInventory().getMilk();
+		int inExpresso = getInventory().getExpresso();
+		int inChocolate = getInventory().getChocolate();
+		
+		if(inCoffee + inventory.getCoffee() > 20) {
+			getInventory().setCoffee(20);
+		}
+		else {
+			getInventory().setCoffee(inventory.getCoffee() + inCoffee);
+		}
+		
+		if(inMilk + inventory.getMilk() > 20) {
+			getInventory().setMilk(20);
+		}
+		else {
+			getInventory().setMilk(inventory.getMilk() + inMilk);
+		}
+		
+		if(inSugar + inventory.getSugar() > 20) {
+			getInventory().setSugar(20);
+		}
+		else {
+			getInventory().setSugar(inventory.getSugar() + inSugar);
+		}
+		
+		if(inExpresso + inventory.getExpresso() > 20) {
+			getInventory().setExpresso(20);
+		}
+		else {
+			getInventory().setExpresso(inventory.getExpresso() + inExpresso);
+		}
+		
+		if(inChocolate + inventory.getChocolate() > 20) {
+			getInventory().setChocolate(20);
+		}
+		else {
+			getInventory().setChocolate(inventory.getChocolate() + inChocolate);
+		}
 		
 		return true;
-		//user decides how much to add, cap at 20
-		//if full return false
 	}
 	
 	/**
@@ -204,7 +249,13 @@ public class CoffeeMaker {
 	 * @return Boolean - true or false
 	 */
 	public boolean editRecipe(Recipe recipe) {
-		return true;
+		//if recipe don't exists, return false
+		if(getRecipe(recipe.getRecipeName()) == null){
+			return false;
+		}
 		
+		deleteRecipe(recipe.getRecipeName());
+		addRecipe(recipe);
+		return true;		
 	}
 }

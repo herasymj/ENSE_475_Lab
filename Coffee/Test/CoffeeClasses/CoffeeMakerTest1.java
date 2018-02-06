@@ -67,7 +67,7 @@ class CoffeeMakerTest1 {
 		cm.addRecipe(r1);
 		cm.addRecipe(r2);
 		
-		assertEquals(r1.name, cm.getRecipe("r1").name);
+		assertEquals(r1.name, cm.getRecipe("r1").getRecipeName());
 		assertEquals(r1.milk, cm.getRecipe("r1").milk);
 		assertEquals(r2.name, cm.getRecipe("r2").name);
 		assertEquals(r2.milk, cm.getRecipe("r2").milk);
@@ -101,7 +101,31 @@ class CoffeeMakerTest1 {
 
 	@Test
 	void testAddInventory() {
-		fail("Not yet implemented");
+		CoffeeMaker cm = new CoffeeMaker();
+		Recipe r3 = new Recipe("r3", 3, 3, 3, 3, 3);
+		Recipe r4 = new Recipe("r4", 4, 4, 4, 4, 4);
+		Recipe r5 = new Recipe("r5", 5, 5, 5, 5, 5);
+		
+		cm.addRecipe(r3);
+		cm.addRecipe(r5);
+		cm.addRecipe(r4);
+		
+		cm.makeCoffee("r3");
+		cm.makeCoffee("r4");
+		cm.makeCoffee("r5");
+		
+		Inventory in1 = new Inventory();
+		Inventory in2 = new Inventory();
+		in2.setChocolate(10);
+		in2.setSugar(10);
+		in2.setMilk(10);
+		in2.setExpresso(10);
+		in2.setCoffee(10);
+		
+		assertEquals(false, cm.addInventory(in1));
+		assertEquals(true, cm.addInventory(in2));
+		assertEquals(true, cm.addInventory(in2));
+		assertEquals(false, cm.addInventory(in2));
 	}
 
 	@Test
@@ -113,7 +137,11 @@ class CoffeeMakerTest1 {
 		
 		cm.addRecipe(r3);
 		cm.addRecipe(r5);
-		cm.addRecipe(r4);
+		
+		Recipe newR5 = new Recipe("r5", 5, 5, 5, 5, 6);
+		
+		assertEquals(true, cm.editRecipe(newR5));
+		assertEquals(false, cm.editRecipe(r4));
 	}
 
 }
